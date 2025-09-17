@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# Aqib's Portfolio
 
-## Project info
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/33f76e30-0d48-4db1-aab1-674b87ebfa2e
+## 🚀 Live Demo
 
-## How can I edit this code?
+Visit the live portfolio: [aqib2607.github.io](https://aqib2607.github.io)
 
-There are several ways of editing your application.
+## 🛠️ Technologies Used
 
-**Use Lovable**
+This portfolio is built with modern web technologies:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/33f76e30-0d48-4db1-aab1-674b87ebfa2e) and start prompting.
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful and accessible UI components
+- **Lucide React** - Beautiful icons
+- **React Router** - Client-side routing
+- **React Hook Form** - Performant forms with easy validation
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🏃‍♂️ Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Make sure you have Node.js and npm installed on your machine:
+- [Install Node.js with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository:
+```bash
+git clone https://github.com/Aqib2607/portfolio.git
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Navigate to the project directory:
+```bash
+cd portfolio
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. Install dependencies:
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will open in your browser at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📝 Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build the project for production
+- `npm run build:dev` - Build the project in development mode
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint to check code quality
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🏗️ Project Structure
 
-## What technologies are used for this project?
+```
+portfolio/
+├── public/          # Static assets
+├── src/             # Source code
+│   ├── components/  # Reusable UI components
+│   ├── pages/       # Page components
+│   └── ...
+├── package.json     # Dependencies and scripts
+└── README.md        # This file
+```
 
-This project is built with:
+## 🚀 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This portfolio is automatically deployed to GitHub Pages. Any changes pushed to the main branch will trigger a new deployment.
 
-## How can I deploy this project?
+## 🤝 Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/33f76e30-0d48-4db1-aab1-674b87ebfa2e) and click on Share -> Publish.
+If you'd like to contribute or report issues:
 
-## Can I connect a custom domain to my Lovable project?
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-Yes, you can!
+## 📧 Contact
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Feel free to reach out if you have any questions or suggestions!
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+Built with ❤️ by [Aqib](https://github.com/Aqib2607)
