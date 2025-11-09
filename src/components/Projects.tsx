@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React frontend and Node.js backend. Features include user authentication, product management, shopping cart, and payment integration.",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      image: "/e_commerce_image.svg",
-      github: "https://github.com/Aqib2607",
+      title: "Single Doc - Health & Wellness Platform",
+      description: "Comprehensive healthcare management system connecting patients with healthcare professionals, nutritionists, life coaches, and wellness experts. Features video consultations, course management, and collaborative todo lists.",
+      technologies: ["Laravel", "React", "TypeScript", "MySQL", "Google Meet API"],
+      image: "/single_doc.png",
+      github: "https://github.com/Aqib2607/Single_Doc",
       live: "#",
       gradient: "from-primary to-primary-glow"
     },
