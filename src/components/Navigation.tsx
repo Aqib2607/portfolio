@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,14 +62,7 @@ const Navigation = () => {
                 </a>
               ))}
 
-              {/* Contact CTA (styled like previous Hire Me) */}
-              <Button
-                size="sm"
-                className="bg-gradient-primary hover:opacity-90 font-medium px-6 rounded-full"
-                asChild
-              >
-                <a href="#contact">Contact</a>
-              </Button>
+              {/* Contact CTA removed - moved into Hero */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -103,15 +95,7 @@ const Navigation = () => {
                 </a>
               ))}
 
-              {/* Mobile CTA */}
-              <Button
-                size="lg"
-                className="bg-gradient-primary hover:opacity-90 font-medium px-8 py-4 rounded-full mt-8"
-                onClick={() => setIsOpen(false)}
-                asChild
-              >
-                <a href="#contact">Contact</a>
-              </Button>
+              {/* Mobile CTA removed - moved into Hero */}
             </div>
           </div>
         </div>
