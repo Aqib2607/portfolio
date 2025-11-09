@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Skills", href: "/skills" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact", href: "/contact" }
+    { name: "Home", href: "#top" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" }
   ];
 
   useEffect(() => {
@@ -25,11 +22,15 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActivePage = (href: string) => {
-    if (href === "/" && location.pathname === "/") return true;
-    if (href !== "/" && location.pathname === href) return true;
-    return false;
-  };
+  const [currentHash, setCurrentHash] = useState<string>(
+    typeof window !== 'undefined' ? (window.location.hash || '#top') : '#top'
+  );
+
+  useEffect(() => {
+    const onHash = () => setCurrentHash(window.location.hash || '#top');
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
   return (
     <>
@@ -41,36 +42,32 @@ const Navigation = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link 
-              to="/"
+            <a
+              href="#top"
               className="text-2xl font-heading font-bold gradient-text hover:scale-105 transition-transform"
             >
               AJ
-            </Link>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   className={`transition-colors duration-300 font-medium ${
-                    isActivePage(item.href) 
-                      ? "text-primary" 
-                      : "text-foreground hover:text-primary"
+                    currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
                   }`}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
               <Button
                 size="sm"
                 className="bg-gradient-primary hover:opacity-90 font-medium px-6 rounded-full"
                 asChild
               >
-                <Link to="/contact">
-                  Hire Me
-                </Link>
+                <a href="#contact">Hire Me</a>
               </Button>
             </div>
 
@@ -91,19 +88,17 @@ const Navigation = () => {
           <div className="fixed inset-0 bg-background/95 backdrop-blur-xl">
             <div className="flex flex-col items-center justify-center h-full space-y-8">
               {navItems.map((item, index) => (
-                <Link
+                <a
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={`text-2xl font-heading font-medium transition-colors duration-300 ${
-                    isActivePage(item.href) 
-                      ? "text-primary" 
-                      : "text-foreground hover:text-primary"
+                    currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
               <Button
                 size="lg"
@@ -111,9 +106,7 @@ const Navigation = () => {
                 onClick={() => setIsOpen(false)}
                 asChild
               >
-                <Link to="/contact">
-                  Hire Me
-                </Link>
+                <a href="#contact">Hire Me</a>
               </Button>
             </div>
           </div>

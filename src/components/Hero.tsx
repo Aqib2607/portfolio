@@ -1,10 +1,9 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  <section id="top" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-hero animate-gradient opacity-20"></div>
       
@@ -49,9 +48,7 @@ const Hero = () => {
               className="bg-gradient-primary hover:opacity-90 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
               asChild
             >
-              <Link to="/projects">
-                View My Work
-              </Link>
+              <a href="#projects">View My Work</a>
             </Button>
             <Button 
               variant="outline" 
