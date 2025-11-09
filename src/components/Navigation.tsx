@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,13 +61,6 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <Button
-                size="sm"
-                className="bg-gradient-primary hover:opacity-90 font-medium px-6 rounded-full"
-                asChild
-              >
-                <a href="#contact">Hire Me</a>
-              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -100,14 +92,6 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <Button
-                size="lg"
-                className="bg-gradient-primary hover:opacity-90 font-medium px-8 py-4 rounded-full mt-8"
-                onClick={() => setIsOpen(false)}
-                asChild
-              >
-                <a href="#contact">Hire Me</a>
-              </Button>
             </div>
           </div>
         </div>
