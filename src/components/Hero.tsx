@@ -71,59 +71,94 @@ const Hero = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-            <a
-              href="mailto:aqibjawwad2607@gmail.com"
-              title="Email"
-              className="p-3 rounded-full glass-card hover:bg-primary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
-            >
-              <Mail className="w-6 h-6 text-primary" />
-            </a>
-            <a
-              href="https://github.com/Aqib2607"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="GitHub"
-              className="p-3 rounded-full glass-card hover:bg-secondary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-secondary/25"
-            >
-              <Github className="w-6 h-6 text-secondary" />
-            </a>
-            <a
-              href="https://linkedin.com/in/aqib-jawwad"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="LinkedIn"
-              className="p-3 rounded-full glass-card hover:bg-accent/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/25"
-            >
-              <Linkedin className="w-6 h-6 text-accent" />
-            </a>
-            <a
-              href="https://www.facebook.com/TheAsmodeus2607"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Facebook"
-              className="p-3 rounded-full glass-card hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
-            >
-              <Facebook className="w-6 h-6 text-blue-600" />
-            </a>
-            <a
-              href="https://www.instagram.com/_.the_asmodeus._/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Instagram"
-              className="p-3 rounded-full glass-card hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
-            >
-              <Instagram className="w-6 h-6 text-pink-500" />
-            </a>
-            <a
-              href="https://wa.me/8801946664836"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="WhatsApp"
-              className="p-3 rounded-full glass-card hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
-            >
-              <Phone className="w-6 h-6 text-green-500" />
-            </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '1s' }}>
+            {/* Top Row - First 3 Social Links (mobile) / All 6 links (desktop) */}
+            <div className="flex justify-center gap-6">
+              <a
+                href="mailto:aqibjawwad2607@gmail.com"
+                title="Email"
+                className="p-3 rounded-full glass-card hover:bg-primary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+              >
+                <Mail className="w-6 h-6 text-primary" />
+              </a>
+              <a
+                href="https://github.com/Aqib2607"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="GitHub"
+                className="p-3 rounded-full glass-card hover:bg-secondary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-secondary/25"
+              >
+                <Github className="w-6 h-6 text-secondary" />
+              </a>
+              <a
+                href="https://linkedin.com/in/aqib-jawwad"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LinkedIn"
+                className="p-3 rounded-full glass-card hover:bg-accent/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/25"
+              >
+                <Linkedin className="w-6 h-6 text-accent" />
+              </a>
+              {/* Desktop: Show remaining 3 links in same row */}
+              <a
+                href="https://www.facebook.com/TheAsmodeus2607"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Facebook"
+                className="hidden sm:block p-3 rounded-full glass-card hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
+              >
+                <Facebook className="w-6 h-6 text-blue-600" />
+              </a>
+              <a
+                href="https://www.instagram.com/_.the_asmodeus._/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram"
+                className="hidden sm:block p-3 rounded-full glass-card hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+              >
+                <Instagram className="w-6 h-6 text-pink-500" />
+              </a>
+              <a
+                href="https://wa.me/8801946664836"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="WhatsApp"
+                className="hidden sm:block p-3 rounded-full glass-card hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
+              >
+                <Phone className="w-6 h-6 text-green-500" />
+              </a>
+            </div>
+            
+            {/* Bottom Row - Remaining 3 Social Links (mobile only) */}
+            <div className="flex sm:hidden justify-center gap-6">
+              <a
+                href="https://www.facebook.com/TheAsmodeus2607"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Facebook"
+                className="p-3 rounded-full glass-card hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
+              >
+                <Facebook className="w-6 h-6 text-blue-600" />
+              </a>
+              <a
+                href="https://www.instagram.com/_.the_asmodeus._/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram"
+                className="p-3 rounded-full glass-card hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+              >
+                <Instagram className="w-6 h-6 text-pink-500" />
+              </a>
+              <a
+                href="https://wa.me/8801946664836"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="WhatsApp"
+                className="p-3 rounded-full glass-card hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
+              >
+                <Phone className="w-6 h-6 text-green-500" />
+              </a>
+            </div>
           </div>
 
 
