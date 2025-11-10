@@ -9,7 +9,7 @@ const Projects = () => {
       technologies: ["Laravel", "React", "TypeScript", "MySQL", "Google Meet API"],
       image: "/single_doc.png",
       github: "https://github.com/Aqib2607/Single_Doc",
-      live: "#",
+      live: "https://drive.google.com/file/d/1ntncbIWDYjoiDnVS09mepJ93okD5lSk1/view?usp=sharing",
       gradient: "from-primary to-primary-glow"
     },
     {
