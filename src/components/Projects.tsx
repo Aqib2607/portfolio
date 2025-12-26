@@ -22,12 +22,12 @@ const Projects = () => {
       gradient: "from-secondary to-secondary-glow"
     },
     {
-      title: "Weather Dashboard",
-      description: "Modern weather application with location-based forecasts, interactive maps, and detailed weather analytics with beautiful visualizations.",
+      title: "WeatherSphere - Weather Dashboard",
+      description: "A modern weather dashboard providing real-time weather data. Features include hourly and 7-day forecasts, and detailed metrics like humidity, wind speed, pressure, and visibility.",
       technologies: ["JavaScript", "Chart.js", "Weather API", "CSS3"],
-      image: "/weather_dashboard.svg",
-      github: "https://github.com/Aqib2607",
-      live: "#",
+      image: "/weather_dashboard.png",
+      github: "https://drive.google.com/drive/folders/1aAyWPTBzsX6I6Ikqfr1acED2TGDPQWfj?usp=sharing",
+      live: "https://aura-weather-seven.vercel.app/",
       gradient: "from-accent to-accent-glow"
     },
     {
