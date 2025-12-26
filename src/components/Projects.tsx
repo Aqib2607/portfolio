@@ -8,17 +8,17 @@ const Projects = () => {
       description: "Comprehensive healthcare management system connecting patients with healthcare professionals, nutritionists, life coaches, and wellness experts. Features video consultations, course management, and collaborative todo lists.",
       technologies: ["Laravel", "React", "TypeScript", "MySQL", "Google Meet API"],
       image: "/single_doc.png",
-      github: "https://github.com/Aqib2607/Single_Doc",
+      github: "https://drive.google.com/drive/folders/1eZKuDcathc3epROqBFgWKHK3lMXcjhw0?usp=sharing",
       live: "https://drive.google.com/file/d/1ntncbIWDYjoiDnVS09mepJ93okD5lSk1/view?usp=sharing",
       gradient: "from-primary to-primary-glow"
     },
     {
-      title: "Task Management App",
-      description: "Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      technologies: ["React", "Socket.io", "PostgreSQL", "Tailwind CSS"],
-      image: "/task_management_app.svg",
-      github: "https://github.com/Aqib2607",
-      live: "#",
+      title: "TaskFlow - Task Management App",
+      description: "A high-performance task management app with intuitive Kanban boards, real-time collaboration, and insightful analytics to streamline your workflow.",
+      technologies: ["React", "Socket.io", "PostgreSQL", "Tailwind CSS", "OpenAI"],
+      image: "/task_management_app.png",
+      github: "https://drive.google.com/drive/folders/1n5AoyZ4-6aRVpgLCFNuqR8XlqYCmMYrc?usp=sharing",
+      live: "https://taskflow-ten-lemon.vercel.app/",
       gradient: "from-secondary to-secondary-glow"
     },
     {
@@ -127,7 +127,7 @@ const Projects = () => {
                         className="flex items-center gap-2"
                       >
                         <Github className="w-4 h-4" />
-                        Code
+                        Preview
                       </a>
                     </Button>
                     <Button
