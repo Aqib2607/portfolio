@@ -1,9 +1,81 @@
+import { format } from "date-fns";
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSending, setIsSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    const { firstName, lastName, email, subject, message } = formData;
+
+    // TEMPLATE PARAMS - Match these with your EmailJS template variables
+    const templateParams = {
+      to_name: "Aqib Jawwad",
+      from_name: `${firstName} ${lastName}`,
+      from_email: email,
+      subject: subject,
+      message: message,
+      // Adding common redundant fields to ensure they match user's template
+      name: `${firstName} ${lastName}`,
+      email: email,
+      reply_to: email,
+      date: format(new Date(), "PPpp"),
+      submitted_at: format(new Date(), "PPpp"),
+    };
+
+    try {
+      // REPLACE WITH YOUR ACTUAL KEYS FROM EMAILJS DASHBOARD
+      const SERVICE_ID = "service_ovdk5bm";
+      const TEMPLATE_ID = "template_zkvezpp";
+      const PUBLIC_KEY = "MrGqrJKTUgjD-h28-";
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+
+      toast.success("Message sent successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      const errorMessage = error?.text || error?.message || "Failed to send message";
+      toast.error(`Error: ${errorMessage}`);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const contactInfo = [
     {
       icon: Mail,
@@ -75,7 +147,7 @@ const Contact = () => {
                   Get In Touch
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-8">
-                  I'm always open to discussing new opportunities, interesting projects, 
+                  I'm always open to discussing new opportunities, interesting projects,
                   or just having a friendly chat about technology and development.
                 </p>
               </div>
@@ -131,25 +203,35 @@ const Contact = () => {
               <h3 className="text-2xl font-heading font-semibold mb-6">
                 Send a Message
               </h3>
-              
-              <form className="space-y-6">
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">
                       First Name
                     </label>
-                    <Input 
+                    <Input
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
                       placeholder="John"
                       className="bg-background/50 border-border/50 focus:border-primary"
+                      required
+                      disabled={isSending}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
                       Last Name
                     </label>
-                    <Input 
+                    <Input
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
                       placeholder="Doe"
                       className="bg-background/50 border-border/50 focus:border-primary"
+                      required
+                      disabled={isSending}
                     />
                   </div>
                 </div>
@@ -158,10 +240,15 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">
                     Email
                   </label>
-                  <Input 
+                  <Input
+                    name="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="john@example.com"
                     className="bg-background/50 border-border/50 focus:border-primary"
+                    required
+                    disabled={isSending}
                   />
                 </div>
 
@@ -169,9 +256,14 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">
                     Subject
                   </label>
-                  <Input 
+                  <Input
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     placeholder="Project Discussion"
                     className="bg-background/50 border-border/50 focus:border-primary"
+                    required
+                    disabled={isSending}
                   />
                 </div>
 
@@ -179,19 +271,25 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">
                     Message
                   </label>
-                  <Textarea 
+                  <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Tell me about your project..."
                     rows={5}
                     className="bg-background/50 border-border/50 focus:border-primary resize-none"
+                    required
+                    disabled={isSending}
                   />
                 </div>
 
-                <Button 
+                <Button
                   type="submit"
                   className="w-full bg-gradient-primary hover:opacity-90 font-medium py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  disabled={isSending}
                 >
                   <Send className="w-4 h-4 mr-2" />
-                  Send Message
+                  {isSending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>
