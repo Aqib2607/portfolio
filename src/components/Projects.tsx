@@ -31,12 +31,12 @@ const Projects = () => {
       gradient: "from-accent to-accent-glow"
     },
     {
-      title: "Portfolio Website",
-      description: "Responsive portfolio website showcasing projects and skills with modern design, smooth animations, and optimized performance.",
-      technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-      image: "/portfolio_sample.svg",
-      github: "https://github.com/Aqib2607/my-portfolio",
-      live: "https://aqibjawwad.me",
+      title: "Velora - Next Gen Shopping",
+      description: "Experience the future of shopping. Discover exclusive deals and premium products.",
+      technologies: ["React", "Tailwind CSS", "Vite", "Framer Motion"],
+      image: "/velora_thumbnail.png",
+      github: "https://drive.google.com/drive/folders/1eUK4t2gJ3XRRVOh-cbFilJCGOOclrsK6?usp=sharing",
+      live: "https://velora-sigma.vercel.app/",
       gradient: "from-primary to-accent"
     }
   ];
@@ -62,7 +62,7 @@ const Projects = () => {
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <div 
+              <div
                 key={project.title}
                 className="group glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -75,7 +75,7 @@ const Projects = () => {
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex gap-2 flex-wrap">
                       {project.technologies.slice(0, 3).map((tech) => (
-                        <span 
+                        <span
                           key={tech}
                           className="px-2 py-1 text-xs bg-background/20 backdrop-blur-sm text-foreground rounded-full border border-white/10"
                         >
@@ -103,7 +103,7 @@ const Projects = () => {
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
-                      <span 
+                      <span
                         key={tech}
                         className="px-3 py-1 text-sm bg-muted/30 text-foreground rounded-full"
                       >
@@ -120,7 +120,7 @@ const Projects = () => {
                       className="flex-1 border-primary/30 hover:bg-primary/10"
                       asChild
                     >
-                      <a 
+                      <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -135,7 +135,7 @@ const Projects = () => {
                       className="flex-1 bg-gradient-primary hover:opacity-90"
                       asChild
                     >
-                      <a 
+                      <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -159,7 +159,7 @@ const Projects = () => {
               className="border-primary/30 hover:bg-primary/10 px-8 py-4 rounded-full group"
               asChild
             >
-              <a 
+              <a
                 href="https://github.com/Aqib2607"
                 target="_blank"
                 rel="noopener noreferrer"
