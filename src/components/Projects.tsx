@@ -1,23 +1,23 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, FolderOpen, ArrowRight, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
   const projects = [
     {
-      title: "Single Doc - Health & Wellness Platform",
-      description: "Comprehensive healthcare management system connecting patients with healthcare professionals, nutritionists, life coaches, and wellness experts. Features video consultations, course management, and collaborative todo lists.",
-      technologies: ["Laravel", "React", "TypeScript", "MySQL", "Google Meet API"],
-      image: "/single_doc.png",
-      github: "https://drive.google.com/drive/folders/1eZKuDcathc3epROqBFgWKHK3lMXcjhw0?usp=sharing",
-      live: "https://drive.google.com/file/d/1ntncbIWDYjoiDnVS09mepJ93okD5lSk1/view?usp=sharing",
-      gradient: "from-primary to-primary-glow"
+      title: "Velora - Next Gen Shopping",
+      description: "Experience the future of shopping. Discover exclusive deals and premium products.",
+      technologies: ["React", "Tailwind CSS", "Vite", "Framer Motion"],
+      image: "/velora_thumbnail.png",
+      sourceFiles: "https://drive.google.com/drive/folders/1eUK4t2gJ3XRRVOh-cbFilJCGOOclrsK6?usp=sharing",
+      live: "https://velora-sigma.vercel.app/",
+      gradient: "from-primary to-accent"
     },
     {
       title: "TaskFlow - Task Management App",
       description: "A high-performance task management app with intuitive Kanban boards, real-time collaboration, and insightful analytics to streamline your workflow.",
       technologies: ["React", "Socket.io", "PostgreSQL", "Tailwind CSS", "OpenAI"],
       image: "/task_management_app.png",
-      github: "https://drive.google.com/drive/folders/1n5AoyZ4-6aRVpgLCFNuqR8XlqYCmMYrc?usp=sharing",
+      sourceFiles: "https://drive.google.com/drive/folders/1n5AoyZ4-6aRVpgLCFNuqR8XlqYCmMYrc?usp=sharing",
       live: "https://taskflow-ten-lemon.vercel.app/",
       gradient: "from-secondary to-secondary-glow"
     },
@@ -26,19 +26,20 @@ const Projects = () => {
       description: "A modern weather dashboard providing real-time weather data. Features include hourly and 7-day forecasts, and detailed metrics like humidity, wind speed, pressure, and visibility.",
       technologies: ["JavaScript", "Chart.js", "Weather API", "CSS3"],
       image: "/weather_dashboard.png",
-      github: "https://drive.google.com/drive/folders/1aAyWPTBzsX6I6Ikqfr1acED2TGDPQWfj?usp=sharing",
+      sourceFiles: "https://drive.google.com/drive/folders/1aAyWPTBzsX6I6Ikqfr1acED2TGDPQWfj?usp=sharing",
       live: "https://aura-weather-seven.vercel.app/",
       gradient: "from-accent to-accent-glow"
     },
     {
-      title: "Velora - Next Gen Shopping",
-      description: "Experience the future of shopping. Discover exclusive deals and premium products.",
-      technologies: ["React", "Tailwind CSS", "Vite", "Framer Motion"],
-      image: "/velora_thumbnail.png",
-      github: "https://drive.google.com/drive/folders/1eUK4t2gJ3XRRVOh-cbFilJCGOOclrsK6?usp=sharing",
-      live: "https://velora-sigma.vercel.app/",
-      gradient: "from-primary to-accent"
-    }
+      title: "Single Doc - Health & Wellness Platform",
+      description: "Comprehensive healthcare management system connecting patients with healthcare professionals, nutritionists, life coaches, and wellness experts. Features video consultations, course management, and collaborative todo lists.",
+      technologies: ["Laravel", "React", "TypeScript", "MySQL", "Google Meet API"],
+      image: "/single_doc.png",
+      sourceFiles: "https://drive.google.com/drive/folders/1eZKuDcathc3epROqBFgWKHK3lMXcjhw0?usp=sharing",
+      live: "https://drive.google.com/file/d/1ntncbIWDYjoiDnVS09mepJ93okD5lSk1/view?usp=sharing",
+      demoType: "video" as const,
+      gradient: "from-primary to-primary-glow"
+    },
   ];
 
   return (
@@ -69,7 +70,13 @@ const Projects = () => {
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className={`h-48 bg-gradient-to-r ${project.gradient} opacity-0 absolute inset-0`}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
@@ -121,13 +128,13 @@ const Projects = () => {
                       asChild
                     >
                       <a
-                        href={project.github}
+                        href={project.sourceFiles}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2"
                       >
-                        <Github className="w-4 h-4" />
-                        Preview
+                        <FolderOpen className="w-4 h-4" />
+                        View Files
                       </a>
                     </Button>
                     <Button
@@ -141,8 +148,17 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2"
                       >
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
+                        {project.demoType === "video" ? (
+                          <>
+                            <Video className="w-4 h-4" />
+                            Video Demo
+                          </>
+                        ) : (
+                          <>
+                            <ExternalLink className="w-4 h-4" />
+                            Live Demo
+                          </>
+                        )}
                       </a>
                     </Button>
                   </div>

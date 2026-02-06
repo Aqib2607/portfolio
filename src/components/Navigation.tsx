@@ -33,11 +33,10 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "glass-card backdrop-blur-xl border-b border-border/50" 
-          : "bg-transparent"
-      }`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "glass-card backdrop-blur-xl border-b border-border/50"
+        : "bg-transparent"
+        }`}>
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -54,15 +53,12 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`transition-colors duration-300 font-medium ${
-                    currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
-                  }`}
+                  className={`transition-colors duration-300 font-medium ${currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
                 >
                   {item.name}
                 </a>
               ))}
-
-              {/* Contact CTA removed - moved into Hero */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -86,16 +82,13 @@ const Navigation = () => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`text-2xl font-heading font-medium transition-colors duration-300 ${
-                    currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
-                  }`}
+                  className={`text-2xl font-heading font-medium transition-colors duration-300 ${currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {item.name}
                 </a>
               ))}
-
-              {/* Mobile CTA removed - moved into Hero */}
             </div>
           </div>
         </div>

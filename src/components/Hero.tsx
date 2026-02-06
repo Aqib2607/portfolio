@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-  <section id="top" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="top" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-hero animate-gradient opacity-20"></div>
-      
+
       {/* Floating Elements */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
@@ -17,7 +17,13 @@ const Hero = () => {
           {/* Profile Image */}
           <div className="mb-8 mt-10 animate-fade-in-up">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary p-1 animate-glow">
-              <img src="/profile_pic.jpg" alt="Aqib Jawwad" className="w-full h-full rounded-full object-cover" />
+              <img
+                src="/profile_pic.jpg"
+                alt="Aqib Jawwad"
+                className="w-full h-full rounded-full object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
             </div>
           </div>
 
@@ -30,14 +36,14 @@ const Hero = () => {
 
           {/* Subtitle */}
           <div className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <span className="font-medium text-primary">Full Stack Developer</span> • 
-            <span className="font-medium text-secondary ml-2">Problem Solver</span> • 
+            <span className="font-medium text-primary">Full Stack Developer</span> •
+            <span className="font-medium text-secondary ml-2">Problem Solver</span> •
             <span className="font-medium text-accent ml-2">Tech Enthusiast</span>
           </div>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            Curious and detail-driven developer with a passion for building innovative web solutions. 
+            Curious and detail-driven developer with a passion for building innovative web solutions.
             I specialize in creating user-friendly applications with clean, efficient code.
           </p>
 
@@ -58,8 +64,8 @@ const Hero = () => {
             >
               <a href="#contact">Contact</a>
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
               className="border-primary/30 text-foreground hover:bg-primary/10 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
               asChild
@@ -128,7 +134,7 @@ const Hero = () => {
                 <Phone className="w-6 h-6 text-green-500" />
               </a>
             </div>
-            
+
             {/* Bottom Row - Remaining 3 Social Links (mobile only) */}
             <div className="flex sm:hidden justify-center gap-6">
               <a

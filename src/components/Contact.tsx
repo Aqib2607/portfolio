@@ -59,9 +59,14 @@ const Contact = () => {
         subject: "",
         message: ""
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("EmailJS Error:", error);
-      const errorMessage = error?.text || error?.message || "Failed to send message";
+      const errorMessage =
+        error && typeof error === 'object' && 'text' in error
+          ? String(error.text)
+          : error && typeof error === 'object' && 'message' in error
+            ? String(error.message)
+            : "Failed to send message";
       toast.error(`Error: ${errorMessage}`);
     } finally {
       setIsSending(false);
