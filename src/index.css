@@ -6,96 +6,98 @@
 
 @layer base {
   :root {
-    /* Light theme - Premium Earthy Palette */
-    --background: 48 39% 90%;
-    /* Warm cream base #EAE6D2 */
-    --background-secondary: 48 35% 85%;
-    /* Slightly darker cream for depth */
-    --foreground: 180 20% 2%;
-    /* Almost pure black for maximum contrast */
+    /* Green-Yellow Palette - "Use this" */
+    --background: 0 0% 3%;
+    /* #080808 - Black Background */
+    --background-secondary: 0 0% 6%;
+    /* Slightly lighter black */
+    --foreground: 0 0% 100%;
+    /* #FFFFFF - White Text */
 
-    /* Card colors with warm tones */
-    --card: 48 45% 95%;
-    /* Lighter cream for cards */
-    --card-foreground: 180 20% 2%;
-    /* Almost pure black text */
-    --card-glass: 48 40% 92%;
-    /* Subtle cream glass */
+    /* Card colors */
+    --card: 0 0% 3%;
+    /* #080808 */
+    --card-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --card-glass: 0 0% 3%;
+    /* #080808 */
 
-    --popover: 48 45% 95%;
-    --popover-foreground: 180 20% 2%;
-    /* Almost pure black text */
+    --popover: 0 0% 3%;
+    /* #080808 */
+    --popover-foreground: 0 0% 100%;
+    /* #FFFFFF */
 
-    /* Primary - Olive Gold for brand accent */
-    --primary: 62 26% 52%;
-    /* Olive gold #A7AA63 */
-    --primary-glow: 62 30% 60%;
-    /* Lighter olive gold */
-    --primary-foreground: 180 20% 8%;
-    /* Deep charcoal on primary */
+    /* Primary - Yellow */
+    --primary: 50 90% 52%;
+    /* #F4CE14 */
+    --primary-foreground: 0 0% 3%;
+    /* #080808 - Black text on Yellow */
+    --primary-glow: 50 90% 60%;
 
-    /* Secondary - Dark Olive for depth */
-    --secondary: 56 15% 27%;
-    /* Dark olive #505039 */
-    --secondary-glow: 56 18% 35%;
-    /* Lighter olive */
-    --secondary-foreground: 48 39% 90%;
-    /* Cream text on dark olive */
+    /* Secondary - Dark Green */
+    --secondary: 121 38% 36%;
+    /* #387F39 */
+    --secondary-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --secondary-glow: 121 38% 45%;
 
-    /* Accent - Vibrant olive gold for interactions */
-    --accent: 62 30% 48%;
-    /* Rich olive gold */
-    --accent-glow: 62 35% 58%;
-    /* Bright olive gold */
-    --accent-foreground: 180 20% 8%;
-    /* Deep charcoal */
+    /* Accent - Light Green */
+    --accent: 87 47% 62%;
+    /* #A2CA71 */
+    --accent-foreground: 0 0% 3%;
+    /* #080808 */
+    --accent-glow: 87 47% 70%;
 
     /* Muted tones */
-    --muted: 48 30% 82%;
-    /* Muted cream */
-    --muted-foreground: 56 15% 27%;
-    /* Dark olive for muted text */
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 48 39% 90%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Borders and inputs */
-    --border: 48 25% 75%;
-    --input: 48 35% 93%;
-    --ring: 62 26% 52%;
-    /* Olive gold focus ring */
+    --border: 121 38% 25%;
+    /* #387F39 Dark Green adjusted for border visibility */
+    --input: 0 0% 12%;
+    --ring: 50 90% 52%;
+    /* #F4CE14 */
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Premium gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(62 26% 52%), hsl(62 30% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(56 15% 27%), hsl(56 18% 35%));
-    --gradient-accent: linear-gradient(135deg, hsl(62 30% 48%), hsl(62 35% 58%));
-    --gradient-hero: linear-gradient(135deg, hsl(48 39% 90%), hsl(48 35% 85%), hsl(62 20% 75%));
+    /* Gradients updated to use new Green-Yellow palette */
+    --gradient-primary: linear-gradient(135deg, hsl(50 90% 52%), hsl(50 90% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(121 38% 36%), hsl(87 47% 62%));
+    --gradient-accent: linear-gradient(135deg, hsl(50 90% 52%), hsl(87 47% 62%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 3%), hsl(121 38% 15%), hsl(0 0% 5%));
 
-    /* Glass effect - warm sophisticated */
-    --glass-bg: hsla(48, 45%, 95%, 0.35);
-    --glass-border: hsla(62, 26%, 52%, 0.2);
-    /* Olive gold tint */
+    /* Glass effect */
+    --glass-bg: hsla(0, 0%, 3%, 0.9);
+    --glass-border: hsla(121, 38%, 36%, 0.2);
 
-    /* Elegant shadows */
-    --shadow-glow: 0 0 40px hsl(62 30% 48% / 0.25);
-    /* Olive gold glow */
-    --shadow-card: 0 8px 32px hsla(56, 15%, 27%, 0.12);
-    /* Dark olive shadow */
+    /* Shadows */
+    --shadow-glow: 0 0 20px hsl(50 90% 52% / 0.3);
+    --shadow-card: 0 4px 12px hsla(0, 0%, 0%, 0.5);
 
     /* Animation timing */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 48 45% 95%;
-    --sidebar-foreground: 180 20% 8%;
-    --sidebar-primary: 62 26% 52%;
-    --sidebar-primary-foreground: 180 20% 8%;
-    --sidebar-accent: 48 35% 88%;
-    --sidebar-accent-foreground: 180 20% 8%;
-    --sidebar-border: 48 25% 80%;
-    --sidebar-ring: 62 26% 52%;
+    --sidebar-background: 0 0% 3%;
+    /* #080808 */
+    --sidebar-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --sidebar-primary: 50 90% 52%;
+    /* #F4CE14 */
+    --sidebar-primary-foreground: 0 0% 3%;
+    /* #080808 */
+    --sidebar-accent: 121 38% 36%;
+    /* #387F39 */
+    --sidebar-accent-foreground: 0 0% 100%;
+    /* #FFFFFF */
+    --sidebar-border: 121 38% 36%;
+    /* #387F39 */
+    --sidebar-ring: 50 90% 52%;
+    /* #F4CE14 */
   }
 }
 
