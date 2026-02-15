@@ -1,9 +1,13 @@
-import { ExternalLink, FolderOpen, ArrowRight, Video } from "lucide-react";
+import { ExternalLink, FolderOpen, ArrowRight, Video, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import { useState } from "react";
+import ProjectDetailsModal from "./ProjectDetailsModal";
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
   return (
     <section id="projects" className="py-20 relative">
       {/* Background Elements */}
@@ -23,11 +27,11 @@ const Projects = () => {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.slice(0, 4).map((project, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.slice(0, 3).map((project, index) => (
               <div
                 key={project.title}
-                className="group glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl"
+                className="group glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl flex flex-col h-full"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Project Image */}
@@ -61,7 +65,7 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
@@ -82,22 +86,15 @@ const Projects = () => {
                   </div>
 
                   {/* Project Links */}
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button
                       variant="outline"
                       size="sm"
                       className="flex-1 border-primary/30 hover:bg-primary/10 hover:text-primary transition-colors"
-                      asChild
+                      onClick={() => setSelectedProject(project)}
                     >
-                      <a
-                        href={project.sourceFiles}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2"
-                      >
-                        <FolderOpen className="w-4 h-4" />
-                        View Files
-                      </a>
+                      <Eye className="w-4 h-4 mr-2" />
+                      View Details
                     </Button>
                     <Button
                       size="sm"
@@ -128,6 +125,12 @@ const Projects = () => {
               </div>
             ))}
           </div>
+
+          <ProjectDetailsModal
+            project={selectedProject}
+            isOpen={!!selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
 
           {/* View More Button */}
           <div className="text-center mt-12">

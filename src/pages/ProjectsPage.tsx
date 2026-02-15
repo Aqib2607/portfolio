@@ -1,9 +1,13 @@
-import { ExternalLink, FolderOpen, Video, ArrowLeft } from "lucide-react";
+import { ExternalLink, FolderOpen, Video, ArrowLeft, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import { useState } from "react";
+import ProjectDetailsModal from "@/components/ProjectDetailsModal";
 
 const ProjectsPage = () => {
+    const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
     return (
         <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
             <div className="container mx-auto px-6">
@@ -88,17 +92,10 @@ const ProjectsPage = () => {
                                             variant="outline"
                                             size="sm"
                                             className="flex-1 border-primary/30 hover:bg-primary/10 hover:text-primary transition-colors"
-                                            asChild
+                                            onClick={() => setSelectedProject(project)}
                                         >
-                                            <a
-                                                href={project.sourceFiles}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2"
-                                            >
-                                                <FolderOpen className="w-4 h-4" />
-                                                Code
-                                            </a>
+                                            <Eye className="w-4 h-4 mr-2" />
+                                            View Details
                                         </Button>
                                         <Button
                                             size="sm"
@@ -129,6 +126,12 @@ const ProjectsPage = () => {
                             </div>
                         ))}
                     </div>
+
+                    <ProjectDetailsModal
+                        project={selectedProject}
+                        isOpen={!!selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                    />
                 </div>
             </div>
         </div>
