@@ -47,18 +47,18 @@ const About = () => {
                 </h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    I'm currently pursuing my Bachelor's degree in Computer Science and Engineering 
-                    at Northern University of Business and Technology Khulna, where I'm building 
+                    I'm currently pursuing my Bachelor's degree in Computer Science and Engineering
+                    at Northern University of Business and Technology Khulna, where I'm building
                     a strong foundation in technology and systems thinking.
                   </p>
                   <p>
-                    As a curious and detail-driven problem solver, I enjoy tackling complex 
-                    challenges and optimizing solutions. My experience spans software development, 
+                    As a curious and detail-driven problem solver, I enjoy tackling complex
+                    challenges and optimizing solutions. My experience spans software development,
                     databases, and operating systems, with a keen interest in modern web technologies.
                   </p>
                   <p>
-                    Beyond technical skills, my interest in business communication and strategy 
-                    allows me to adapt across different roles. I thrive in environments where 
+                    Beyond technical skills, my interest in business communication and strategy
+                    allows me to adapt across different roles. I thrive in environments where
                     I can learn, improve, and contribute meaningfully to innovative projects.
                   </p>
                 </div>
@@ -93,14 +93,14 @@ const About = () => {
             {/* Right Content - Highlights */}
             <div className="space-y-6">
               {highlights.map((highlight, index) => (
-                <div 
+                <div
                   key={highlight.title}
                   className="glass-card p-6 rounded-2xl hover:bg-card-glass/50 transition-all duration-300 hover:scale-105 group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-gradient-primary">
-                      <highlight.icon className="w-6 h-6 text-white" />
+                      <highlight.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
                     <div className="flex-1">
                       <h4 className="text-xl font-heading font-semibold mb-2 group-hover:text-primary transition-colors">

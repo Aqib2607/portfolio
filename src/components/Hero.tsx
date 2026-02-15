@@ -22,7 +22,8 @@ const Hero = () => {
                 alt="Aqib Jawwad"
                 className="w-full h-full rounded-full object-cover"
                 loading="eager"
-                fetchPriority="high"
+                // @ts-expect-error - fetchpriority is valid but not yet in React types
+                fetchpriority="high"
               />
             </div>
           </div>
@@ -51,7 +52,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
             <Button
               size="lg"
-              className="bg-gradient-primary hover:opacity-90 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+              className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
               asChild
             >
               <a href="#projects">View My Work</a>
@@ -59,7 +60,7 @@ const Hero = () => {
             {/* Moved Contact CTA from navbar into hero */}
             <Button
               size="lg"
-              className="bg-gradient-primary hover:opacity-90 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+              className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
               asChild
             >
               <a href="#contact">Contact</a>
@@ -67,7 +68,7 @@ const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-primary/30 text-foreground hover:bg-primary/10 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+              className="border-primary/30 text-foreground hover:bg-primary/10 hover:text-primary px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
               asChild
             >
               <a href="https://drive.google.com/file/d/1uFkJPdXK9bLCaOqSEItCXwb81lLeXr5U/view?usp=sharing" target="_blank" rel="noopener noreferrer">
@@ -83,27 +84,27 @@ const Hero = () => {
               <a
                 href="mailto:aqibjawwad2607@gmail.com"
                 title="Email"
-                className="p-3 rounded-full glass-card hover:bg-primary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+                className="p-3 rounded-full border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
               >
-                <Mail className="w-6 h-6 text-primary" />
+                <Mail className="w-6 h-6" />
               </a>
               <a
                 href="https://github.com/Aqib2607"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="GitHub"
-                className="p-3 rounded-full glass-card hover:bg-secondary/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-secondary/25"
+                className="p-3 rounded-full border border-secondary text-secondary hover:bg-secondary/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-secondary/25"
               >
-                <Github className="w-6 h-6 text-secondary" />
+                <Github className="w-6 h-6" />
               </a>
               <a
-                href="https://linkedin.com/in/aqib-jawwad"
+                href="https://www.linkedin.com/in/aqib-jawwad-nahin-598288278/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="LinkedIn"
-                className="p-3 rounded-full glass-card hover:bg-accent/20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/25"
+                className="p-3 rounded-full border border-accent text-accent hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/25"
               >
-                <Linkedin className="w-6 h-6 text-accent" />
+                <Linkedin className="w-6 h-6" />
               </a>
               {/* Desktop: Show remaining 3 links in same row */}
               <a
@@ -111,27 +112,27 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Facebook"
-                className="hidden sm:block p-3 rounded-full glass-card hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
+                className="hidden sm:block p-3 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
               >
-                <Facebook className="w-6 h-6 text-blue-600" />
+                <Facebook className="w-6 h-6" />
               </a>
               <a
                 href="https://www.instagram.com/_.the_asmodeus._/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"
-                className="hidden sm:block p-3 rounded-full glass-card hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+                className="hidden sm:block p-3 rounded-full border border-pink-500 text-pink-500 hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
               >
-                <Instagram className="w-6 h-6 text-pink-500" />
+                <Instagram className="w-6 h-6" />
               </a>
               <a
                 href="https://wa.me/8801946664836"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="WhatsApp"
-                className="hidden sm:block p-3 rounded-full glass-card hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
+                className="hidden sm:block p-3 rounded-full border border-green-500 text-green-500 hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
               >
-                <Phone className="w-6 h-6 text-green-500" />
+                <Phone className="w-6 h-6" />
               </a>
             </div>
 
@@ -142,27 +143,27 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Facebook"
-                className="p-3 rounded-full glass-card hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
+                className="p-3 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-600/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
               >
-                <Facebook className="w-6 h-6 text-blue-600" />
+                <Facebook className="w-6 h-6" />
               </a>
               <a
                 href="https://www.instagram.com/_.the_asmodeus._/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"
-                className="p-3 rounded-full glass-card hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+                className="p-3 rounded-full border border-pink-500 text-pink-500 hover:bg-pink-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
               >
-                <Instagram className="w-6 h-6 text-pink-500" />
+                <Instagram className="w-6 h-6" />
               </a>
               <a
                 href="https://wa.me/8801946664836"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="WhatsApp"
-                className="p-3 rounded-full glass-card hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
+                className="p-3 rounded-full border border-green-500 text-green-500 hover:bg-green-500/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
               >
-                <Phone className="w-6 h-6 text-green-500" />
+                <Phone className="w-6 h-6" />
               </a>
             </div>
           </div>

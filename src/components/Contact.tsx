@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -110,19 +110,37 @@ const Contact = () => {
       icon: Github,
       label: "GitHub",
       href: "https://github.com/Aqib2607",
-      color: "hover:text-primary"
+      color: "border-secondary text-secondary hover:bg-secondary/10"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/aqib-jawwad",
-      color: "hover:text-secondary"
+      href: "https://www.linkedin.com/in/aqib-jawwad-nahin-598288278/",
+      color: "border-accent text-accent hover:bg-accent/10"
+    },
+    {
+      icon: Facebook,
+      label: "Facebook",
+      href: "https://www.facebook.com/TheAsmodeus2607",
+      color: "border-blue-600 text-blue-600 hover:bg-blue-600/10"
+    },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      href: "https://www.instagram.com/_.the_asmodeus._/",
+      color: "border-pink-500 text-pink-500 hover:bg-pink-500/10"
+    },
+    {
+      icon: Phone,
+      label: "WhatsApp",
+      href: "https://wa.me/8801946664836",
+      color: "border-green-500 text-green-500 hover:bg-green-500/10"
     },
     {
       icon: Mail,
       label: "Email",
       href: "mailto:aqibjawwad2607@gmail.com",
-      color: "hover:text-accent"
+      color: "border-primary text-primary hover:bg-primary/10"
     }
   ];
 
@@ -167,7 +185,7 @@ const Contact = () => {
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className={`p-3 rounded-lg bg-gradient-primary`}>
-                      <contact.icon className="w-5 h-5 text-white" />
+                      <contact.icon className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div>
                       <p className="font-medium text-foreground group-hover:text-primary transition-colors">
@@ -183,17 +201,17 @@ const Contact = () => {
 
               {/* Social Links */}
               <div className="pt-8">
-                <h4 className="text-lg font-heading font-semibold mb-4">
+                <h4 className="text-lg font-heading font-semibold mb-6">
                   Follow Me
                 </h4>
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                   {socialLinks.map((social) => (
                     <a
                       key={social.label}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 glass-card rounded-xl ${social.color} transition-all duration-300 hover:scale-110 hover:shadow-lg`}
+                      className={`p-3 rounded-full border ${social.color} transition-all duration-300 hover:scale-110 hover:shadow-lg`}
                       title={social.label}
                     >
                       <social.icon className="w-5 h-5" />
@@ -212,10 +230,11 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label htmlFor="firstName" className="block text-sm font-medium mb-2">
                       First Name
                     </label>
                     <Input
+                      id="firstName"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
@@ -223,13 +242,15 @@ const Contact = () => {
                       className="bg-background/50 border-border/50 focus:border-primary"
                       required
                       disabled={isSending}
+                      autoComplete="given-name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label htmlFor="lastName" className="block text-sm font-medium mb-2">
                       Last Name
                     </label>
                     <Input
+                      id="lastName"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
@@ -237,15 +258,17 @@ const Contact = () => {
                       className="bg-background/50 border-border/50 focus:border-primary"
                       required
                       disabled={isSending}
+                      autoComplete="family-name"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Email
                   </label>
                   <Input
+                    id="email"
                     name="email"
                     type="email"
                     value={formData.email}
@@ -254,14 +277,16 @@ const Contact = () => {
                     className="bg-background/50 border-border/50 focus:border-primary"
                     required
                     disabled={isSending}
+                    autoComplete="email"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
                     Subject
                   </label>
                   <Input
+                    id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
@@ -273,10 +298,11 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message
                   </label>
                   <Textarea
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
@@ -290,7 +316,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-primary hover:opacity-90 font-medium py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium py-3 rounded-xl transition-all duration-300 hover:scale-105"
                   disabled={isSending}
                 >
                   <Send className="w-4 h-4 mr-2" />

@@ -1,35 +1,55 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation, Link } from "react-router-dom";
+
+const navItems = [
+  { name: "Home", href: "#top" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" }
+];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navItems = [
-    { name: "Home", href: "#top" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" }
-  ];
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const [activeSection, setActiveSection] = useState("top");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Scroll Spy Logic
+      if (isHome) {
+        const sections = navItems.map(item => item.href.substring(1));
+
+        // Find the current section
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            // Check if section is visible in viewport (adjust threshold as needed)
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              setActiveSection(section);
+              break;
+            }
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initially
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
-  const [currentHash, setCurrentHash] = useState<string>(
-    typeof window !== 'undefined' ? (window.location.hash || '#top') : '#top'
-  );
-
-  useEffect(() => {
-    const onHash = () => setCurrentHash(window.location.hash || '#top');
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  }, []);
+  const getHref = (href: string) => {
+    if (isHome) return href;
+    return `/${href}`;
+  };
 
   return (
     <>
@@ -41,7 +61,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a
-              href="#top"
+              href={isHome ? "#top" : "/"}
               className="text-2xl font-heading font-bold gradient-text hover:scale-105 transition-transform"
             >
               AJ
@@ -52,8 +72,8 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
-                  className={`transition-colors duration-300 font-medium ${currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                  href={getHref(item.href)}
+                  className={`transition-colors duration-300 font-medium ${isHome && activeSection === item.href.substring(1) ? "text-primary" : "text-foreground hover:text-primary"
                     }`}
                 >
                   {item.name}
@@ -80,9 +100,9 @@ const Navigation = () => {
               {navItems.map((item, index) => (
                 <a
                   key={item.name}
-                  href={item.href}
+                  href={getHref(item.href)}
                   onClick={() => setIsOpen(false)}
-                  className={`text-2xl font-heading font-medium transition-colors duration-300 ${currentHash === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                  className={`text-2xl font-heading font-medium transition-colors duration-300 ${isHome && activeSection === item.href.substring(1) ? "text-primary" : "text-foreground hover:text-primary"
                     }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
