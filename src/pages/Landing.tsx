@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -6,8 +7,13 @@ import Contact from "@/components/Contact";
 
 const Landing = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Hero />
+    <>
+      <Helmet>
+        <link rel="canonical" href="https://aqibjawwad.me/" />
+        <meta property="og:url" content="https://aqibjawwad.me/" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <Hero />
 
       <main>
         <About />
@@ -16,6 +22,7 @@ const Landing = () => {
         <Contact />
       </main>
     </div>
+    </>
   );
 };
 

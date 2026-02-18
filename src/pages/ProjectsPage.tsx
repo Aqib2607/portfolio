@@ -1,6 +1,7 @@
 import { ExternalLink, FolderOpen, Video, ArrowLeft, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { projects } from "@/data/projects";
 import { useState } from "react";
 import ProjectDetailsModal from "@/components/ProjectDetailsModal";
@@ -9,7 +10,14 @@ const ProjectsPage = () => {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
     return (
-        <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
+        <>
+            <Helmet>
+                <title>Projects - Aqib Jawwad Nahin</title>
+                <link rel="canonical" href="https://aqibjawwad.me/projects" />
+                <meta property="og:url" content="https://aqibjawwad.me/projects" />
+                <meta property="og:title" content="Projects - Aqib Jawwad Nahin" />
+            </Helmet>
+            <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
             <div className="container mx-auto px-6">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
@@ -135,6 +143,7 @@ const ProjectsPage = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
