@@ -18,7 +18,7 @@ const Hero = () => {
           <div className="mb-8 mt-10 animate-fade-in-up">
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary p-1 animate-glow">
               <img
-                src="/profile_pic.jpg"
+                src="/about/profile_pic.jpg"
                 alt="Aqib Jawwad"
                 className="w-full h-full rounded-full object-cover"
                 loading="eager"

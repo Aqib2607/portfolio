@@ -18,7 +18,7 @@ export const projects = [
             "Secure payment gateway integration patterns.",
             "Responsive UI using Tailwind CSS grid and flexbox systems."
         ],
-        image: "/velora_thumbnail.png",
+        image: "/projects/velora_thumbnail.png",
         sourceFiles: "https://github.com/Aqib2607/Velora",
         live: "https://velora-sigma.vercel.app/",
         gradient: "from-primary to-accent"
@@ -42,7 +42,7 @@ export const projects = [
             "Complex database schema design in PostgreSQL for task relationships.",
             "AI integration (OpenAI API) for automated task summarization."
         ],
-        image: "/task_management_app.png",
+        image: "/projects/task_management_app.png",
         sourceFiles: "https://drive.google.com/drive/folders/1n5AoyZ4-6aRVpgLCFNuqR8XlqYCmMYrc?usp=sharing",
         live: "https://taskflow-ten-lemon.vercel.app/",
         gradient: "from-secondary to-secondary-glow"
@@ -66,7 +66,7 @@ export const projects = [
             "Database normalization for handling millions of patient records efficiently.",
             "Automated PDF generation for medical reports and prescriptions."
         ],
-        image: "/clinexa_thumbnail.png",
+        image: "/projects/clinexa_thumbnail.png",
         sourceFiles: "https://github.com/Aqib2607/clinexa",
         live: "https://clinexa-chi.vercel.app/",
         gradient: "from-blue-600 to-cyan-600"
@@ -90,7 +90,7 @@ export const projects = [
             "JWT authentication for secure stateless API communication.",
             "Video streaming implementation for course content delivery."
         ],
-        image: "/single_doc.png",
+        image: "/projects/single_doc.png",
         sourceFiles: "https://github.com/Aqib2607/Single_Doc",
         live: "https://drive.google.com/file/d/1ntncbIWDYjoiDnVS09mepJ93okD5lSk1/view?usp=sharing",
         demoType: "video" as const,
@@ -115,7 +115,7 @@ export const projects = [
             "Geolocation API integration for automatic location detection.",
             "Data visualization using Chart.js for temperature and precipitation trends."
         ],
-        image: "/weather_dashboard.png",
+        image: "/projects/weather_dashboard.png",
         sourceFiles: "https://github.com/Aqib2607/aura-weather",
         live: "https://aura-weather-seven.vercel.app/",
         gradient: "from-accent to-accent-glow"

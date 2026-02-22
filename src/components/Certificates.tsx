@@ -9,7 +9,7 @@ const Certificates = () => {
             title: "GenAI Job Simulation",
             issuer: "BCG X / Forage",
             date: "February 22nd, 2026",
-            image: "/Certificate_1.png",
+            image: "/certificates/Certificate_1.png",
             link: "https://www.theforage.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_699ad4ae3b2e4c13b632ae51_1771757269197_completion_certificate.pdf",
             isPdf: false,
             skills: [
