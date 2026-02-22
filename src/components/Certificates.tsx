@@ -40,39 +40,40 @@ const Certificates = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {certificates.map((cert, index) => (
-                            <div
-                                key={index}
-                                className="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full"
-                            >
-                                {/* Certificate Preview rendering */}
-                                <div className="relative aspect-[1.414] bg-transparent overflow-hidden flex items-center justify-center border-b border-border/50 group-hover:border-primary/50 transition-colors">
-                                    {cert.isPdf ? (
-                                        // Render PDF directly using iframe for high quality rendering
-                                        <div className="w-full h-full relative">
-                                            <iframe
-                                                src={`${cert.image}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
-                                                className="w-full h-full object-contain pointer-events-none"
-                                                title={cert.title}
-                                            />
-                                            {/* Overlay to intercept clicks on the iframe and trigger the link instead */}
-                                            <a href={cert.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10 block" aria-label={`View ${cert.title}`}></a>
+                            <Dialog key={index}>
+                                <div
+                                    className="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full"
+                                >
+                                    {/* Certificate Preview rendering */}
+                                    <DialogTrigger asChild>
+                                        <div className="relative aspect-[1.414] bg-transparent overflow-hidden flex items-center justify-center border-b border-border/50 group-hover:border-primary/50 transition-colors cursor-pointer">
+                                            {cert.isPdf ? (
+                                                // Render PDF directly using iframe for high quality rendering
+                                                <div className="w-full h-full relative">
+                                                    <iframe
+                                                        src={`${cert.image}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
+                                                        className="w-full h-full object-contain pointer-events-none"
+                                                        title={cert.title}
+                                                    />
+                                                    {/* Overlay to intercept clicks on the iframe and trigger the link instead */}
+                                                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10 block" aria-label={`View ${cert.title}`}></a>
+                                                </div>
+                                            ) : (
+                                                <img
+                                                    src={cert.image}
+                                                    alt={cert.title}
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                />
+                                            )}
                                         </div>
-                                    ) : (
-                                        <img
-                                            src={cert.image}
-                                            alt={cert.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    )}
-                                </div>
+                                    </DialogTrigger>
 
-                                {/* Certificate Details */}
-                                <div className="p-6 flex flex-col flex-grow">
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <Award className="w-5 h-5 text-primary" />
-                                        <span className="text-sm font-medium text-accent">{cert.issuer}</span>
-                                    </div>
-                                    <Dialog>
+                                    {/* Certificate Details */}
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <Award className="w-5 h-5 text-primary" />
+                                            <span className="text-sm font-medium text-accent">{cert.issuer}</span>
+                                        </div>
                                         <DialogTrigger asChild>
                                             <button className="text-left w-full group/title">
                                                 <h3 className="text-xl font-heading font-bold mb-8 group-hover/title:text-primary transition-colors">
@@ -115,21 +116,22 @@ const Certificates = () => {
                                                 )}
                                             </div>
                                         </DialogContent>
-                                    </Dialog>
 
-                                    <div className="mt-auto pt-4 flex items-center justify-between text-sm text-muted-foreground border-t border-border/50">
-                                        <span>{cert.date}</span>
-                                        <a
-                                            href={cert.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-primary hover:text-primary/80 transition-colors flex items-center gap-1 font-medium"
-                                        >
-                                            View Link <ExternalLink className="w-3 h-3" />
-                                        </a>
+                                        <div className="mt-auto pt-4 flex items-center justify-between text-sm text-muted-foreground border-t border-border/50">
+                                            <span>{cert.date}</span>
+                                            <a
+                                                href={cert.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-primary hover:text-primary/80 transition-colors flex items-center gap-1 font-medium"
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                View Link <ExternalLink className="w-3 h-3" />
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Dialog>
                         ))}
                     </div>
                 </div>
