@@ -7,9 +7,9 @@ const Certificates = () => {
             title: "GenAI Job Simulation",
             issuer: "BCG X / Forage",
             date: "2026",
-            image: "https://www.theforage.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_699ad4ae3b2e4c13b632ae51_1771757269197_completion_certificate.pdf",
+            image: "/Certificate_1.png",
             link: "https://www.theforage.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_699ad4ae3b2e4c13b632ae51_1771757269197_completion_certificate.pdf",
-            isPdf: true,
+            isPdf: false,
         }
     ];
 
@@ -53,13 +53,6 @@ const Certificates = () => {
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
                                     )}
-
-                                    {/* Hover Overlay */}
-                                    <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                                        <Button variant="secondary" className="gap-2 pointer-events-auto">
-                                            <ExternalLink className="w-4 h-4" /> View Certificate
-                                        </Button>
-                                    </div>
                                 </div>
 
                                 {/* Certificate Details */}
