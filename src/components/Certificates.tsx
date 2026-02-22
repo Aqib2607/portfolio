@@ -1,15 +1,26 @@
 import { ExternalLink, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 
 const Certificates = () => {
     const certificates = [
         {
             title: "GenAI Job Simulation",
             issuer: "BCG X / Forage",
-            date: "2026",
+            date: "February 22nd, 2026",
             image: "/Certificate_1.png",
             link: "https://www.theforage.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_699ad4ae3b2e4c13b632ae51_1771757269197_completion_certificate.pdf",
             isPdf: false,
+            skills: [
+                "AI Development", "Data Extraction", "Data Science Tools", "Excel",
+                "Financial Analysis", "Logical Thinking", "Natural Language Processing", "Python Programming"
+            ],
+            description: [
+                "Completed a job simulation involving AI-powered financial chatbot development for BCG's GenAI Consulting team.",
+                "Gained experience in Python programming, including the use of libraries such as pandas for data manipulation.",
+                "Integrated and interpreted complex financial data from 10-K and 10-Q reports, employing rule-based logic to create a chatbot that provides user-friendly financial insights and analysis."
+            ],
         }
     ];
 
@@ -61,10 +72,52 @@ const Certificates = () => {
                                         <Award className="w-5 h-5 text-primary" />
                                         <span className="text-sm font-medium text-accent">{cert.issuer}</span>
                                     </div>
-                                    <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
-                                        {cert.title}
-                                    </h3>
-                                    <div className="mt-auto pt-4 flex items-center justify-between text-sm text-muted-foreground">
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <button className="text-left w-full group/title">
+                                                <h3 className="text-xl font-heading font-bold mb-8 group-hover/title:text-primary transition-colors">
+                                                    {cert.title}
+                                                </h3>
+                                            </button>
+                                        </DialogTrigger>
+                                        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                                            <DialogHeader>
+                                                <DialogTitle className="text-2xl">{cert.title}</DialogTitle>
+                                                <DialogDescription asChild>
+                                                    <div className="flex items-center gap-2 mt-2 font-medium text-accent">
+                                                        <Award className="w-4 h-4 text-primary" /> {cert.issuer}
+                                                    </div>
+                                                </DialogDescription>
+                                            </DialogHeader>
+                                            <div className="mt-4">
+                                                {cert.description && (
+                                                    <div className="mb-6">
+                                                        <h4 className="font-semibold text-sm mb-3 text-foreground">About the Program</h4>
+                                                        <ul className="list-disc list-outside ml-4 text-sm text-muted-foreground space-y-2">
+                                                            {cert.description.map((desc, i) => (
+                                                                <li key={i}>{desc}</li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+
+                                                {cert.skills && (
+                                                    <div>
+                                                        <h4 className="font-semibold text-sm mb-3 text-foreground">Skills Learned</h4>
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {cert.skills.map((skill, i) => (
+                                                                <Badge key={i} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+                                                                    {skill}
+                                                                </Badge>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </DialogContent>
+                                    </Dialog>
+
+                                    <div className="mt-auto pt-4 flex items-center justify-between text-sm text-muted-foreground border-t border-border/50">
                                         <span>{cert.date}</span>
                                         <a
                                             href={cert.link}
