@@ -31,7 +31,8 @@ const Projects = () => {
             {projects.slice(0, 3).map((project, index) => (
               <div
                 key={project.title}
-                className="group glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 hover:shadow-2xl flex flex-col h-full"
+                className={`group glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-500 flex flex-col h-full ${project.badge ? 'border-border/50 hover:shadow-[0_0_30px_-5px_rgba(241,194,50,0.3)] hover:border-[#f1c232]/30' : 'hover:shadow-2xl'
+                  }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Project Image */}
@@ -39,24 +40,24 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                     decoding="async"
                   />
                   <div className={`h-48 bg-gradient-to-r ${project.gradient} opacity-0 absolute inset-0`}></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex gap-2 flex-wrap">
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 text-xs bg-background/20 backdrop-blur-sm text-foreground rounded-full border border-white/10"
+                          className="px-2 py-1 text-xs bg-background/30 backdrop-blur-md text-foreground rounded-full border border-white/10"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 text-xs bg-background/20 backdrop-blur-sm text-foreground rounded-full border border-white/10">
+                        <span className="px-2 py-1 text-xs bg-background/30 backdrop-blur-md text-foreground rounded-full border border-white/10">
                           +{project.technologies.length - 3}
                         </span>
                       )}
@@ -65,8 +66,15 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-colors">
+                <div className="p-6 flex flex-col flex-1 relative">
+                  {project.badge && (
+                    <div className="mb-3">
+                      <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-semibold bg-[#6a329f]/20 text-[#f1c232] rounded-full border border-[#f1c232]/30 shadow-[0_0_10px_rgba(241,194,50,0.1)]">
+                        {project.badge}
+                      </span>
+                    </div>
+                  )}
+                  <h3 className={`text-xl font-heading font-semibold mb-3 transition-colors ${project.badge ? 'group-hover:text-[#f1c232]' : 'group-hover:text-primary'}`}>
                     {project.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
@@ -75,7 +83,7 @@ const Projects = () => {
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
+                    {project.technologies.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
                         className="px-3 py-1 text-sm bg-muted/30 text-foreground rounded-full"
@@ -83,6 +91,11 @@ const Projects = () => {
                         {tech}
                       </span>
                     ))}
+                    {project.technologies.length > 4 && (
+                      <span className="px-3 py-1 text-sm bg-muted/30 text-foreground rounded-full">
+                        +{project.technologies.length - 4}
+                      </span>
+                    )}
                   </div>
 
                   {/* Project Links */}

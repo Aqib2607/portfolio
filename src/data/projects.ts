@@ -1,27 +1,53 @@
 export const projects = [
     {
-        title: "Velora - Next Gen Shopping",
-        description: "A modern e-commerce platform featuring a seamless shopping experience with exclusive deals. Built with a robust Laravel backend and a dynamic React frontend for optimal performance.",
-        overview: "Velora is a cutting-edge e-commerce platform designed to bridge the gap between traditional retail and modern digital shopping. It offers a curated selection of premium products with a focus on user experience, speed, and security. The platform features real-time inventory updates, personalized recommendations, and a seamless checkout process.",
-        technologies: ["Laravel", "React", "Tailwind CSS", "Vite", "Framer Motion"],
+        title: "Velora - Multi Tenant Financial Marketplace",
+        description: "Enterprise Grade B2C & B2B2C Commerce Platform engineered for high-throughput commerce with financial-grade integrity. Features an immutable double-entry ledger, escrow-based payments, and strict tenant isolation.",
+        overview: "Velora is a distributed, multi-tenant global marketplace platform engineered for high-throughput commerce with financial-grade integrity. It implements CQRS architecture, an immutable double-entry ledger, escrow-based payments, and strict tenant isolation. The system is designed for 1,500+ orders per minute, 99.9% checkout uptime, and 7-year financial audit retention.",
+        technologies: [
+            "Laravel 11",
+            "React 18",
+            "Vite",
+            "Tailwind CSS",
+            "MySQL 8",
+            "Redis",
+            "OpenSearch",
+            "AWS",
+            "Docker",
+            "Terraform"
+        ],
         features: [
-            "Seamless Shopping Experience",
-            "Exclusive Deals & Premium Products",
-            "Robust Laravel Backend",
-            "Dynamic React Frontend",
-            "Secure Authentication",
-            "Responsive Design"
+            "Multi-tenant architecture with global tenant_id enforcement",
+            "Immutable double-entry ledger (append-only, debit=credit)",
+            "Escrow-based payment lifecycle with compensating refund entries",
+            "Idempotent order processing with strict state machine",
+            "Soft reserve (Redis) + hard inventory locking",
+            "CQRS separation (MySQL write model / OpenSearch read model)",
+            "Policy-based RBAC with Seller, Admin, Finance roles",
+            "PCI-compliant tokenized payment integration",
+            "GDPR-ready data export & deletion compliance",
+            "Kafka-ready event-driven architecture"
         ],
         technicalInsights: [
-            "State management via React Context API for cart and user sessions.",
-            "Optimized asset loading with Vite for lightning-fast application performance.",
-            "Secure payment gateway integration patterns.",
-            "Responsive UI using Tailwind CSS grid and flexbox systems."
+            "Laravel 11 modular backend with Sanctum authentication",
+            "React 18 + Vite frontend with React Query and Zustand",
+            "MySQL 8 (InnoDB strict mode) with monthly partitioning",
+            "Redis for sessions, cart soft reserves, and queue handling",
+            "OpenSearch full-text indexing with aggregations",
+            "AWS infrastructure (RDS, ElastiCache, EKS, S3, CloudFront)",
+            "Prometheus, Grafana, ELK, Jaeger observability stack",
+            "Terraform-based infrastructure as code"
         ],
+        metrics: {
+            "Checkout Uptime": "99.9%",
+            "Peak Throughput": "1,500 orders/min",
+            "Search Latency": "<50ms",
+            "Financial Retention": "7 Years"
+        },
+        badge: "Financial-grade / Enterprise",
         image: "/projects/velora_thumbnail.png",
         sourceFiles: "https://github.com/Aqib2607/Velora",
-        live: "https://velora-sigma.vercel.app/",
-        gradient: "from-primary to-accent"
+        live: "https://velora-mart.vercel.app/",
+        gradient: "from-[#6a329f] to-[#f1c232]",
     },
     {
         title: "TaskFlow - Task Management App",

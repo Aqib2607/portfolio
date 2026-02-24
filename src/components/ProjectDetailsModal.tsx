@@ -23,6 +23,8 @@ interface Project {
     features?: string[];
     overview?: string;
     technicalInsights?: string[];
+    metrics?: Record<string, string>;
+    badge?: string;
 }
 
 interface ProjectDetailsModalProps {
@@ -50,10 +52,17 @@ const ProjectDetailsModal = ({
                             alt={project.title}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
                         <div className="absolute bottom-6 left-6 right-6">
-                            <DialogTitle className="text-3xl font-heading font-bold text-foreground mb-2">
+                            {project.badge && (
+                                <div className="mb-3">
+                                    <span className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-[#6a329f]/40 backdrop-blur-md text-[#f1c232] rounded-full border border-[#f1c232]/50 shadow-[0_0_15px_rgba(241,194,50,0.2)]">
+                                        {project.badge}
+                                    </span>
+                                </div>
+                            )}
+                            <DialogTitle className="text-3xl font-heading font-bold text-white mb-2 drop-shadow-md">
                                 {project.title}
                             </DialogTitle>
                         </div>
