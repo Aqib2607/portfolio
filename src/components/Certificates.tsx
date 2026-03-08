@@ -10,7 +10,7 @@ const Certificates = () => {
             issuer: "PIBD",
             date: "August 2025 – February 2026",
             image: "/certificates/Certificate_2.jpg",
-            link: null,
+            link: "https://drive.google.com/file/d/1r77XOAvbQDpPTyqpCcJAAwjsYvpvWwA2/view?usp=sharing",
             isPdf: false,
             skills: [
                 "Full-Stack Web Development", "HTML5", "CSS3", "Responsive Web Design",
