@@ -42,6 +42,25 @@ const Certificates = () => {
                 "Gained experience in Python programming, including the use of libraries such as pandas for data manipulation.",
                 "Integrated and interpreted complex financial data from 10-K and 10-Q reports, employing rule-based logic to create a chatbot that provides user-friendly financial insights and analysis."
             ],
+        },
+        {
+            title: "Software Engineering Job Simulation",
+            issuer: "Commonwealth Bank / Forage",
+            date: "March 8th, 2026",
+            image: "/certificates/Certificate_3.png",
+            link: "https://www.theforage.com/completion-certificates/2sNmYuurxgpFYawco/xv8eSGu7nksKNiCQj_2sNmYuurxgpFYawco_699ad4ae3b2e4c13b632ae51_1772964734937_completion_certificate.pdf",
+            isPdf: false,
+            skills: [
+                "React", "Redux", "TypeScript", "C#", ".NET",
+                "MongoDB", "Git", "xUnit", "REST API", "Axios"
+            ],
+            description: [
+                "Completed a job simulation focused on backend and frontend development for Commonwealth Bank's Software Engineering team.",
+                "Demonstrated proficiency building data-driven React applications using Clerk-based access control, implementing user-role guidance patterns.",
+                "Modified an existing React-based frontend to web-scrape and expand filtering capabilities in React, Redux, TypeScript, HTML, and CSS; demonstrated coding skills and familiarity with reading code written in Curl and AWS S3.",
+                "Improved Git and GitHub skills, emphasizing effective source control management through the submission of changes to a project for team review.",
+                "Built and designed a rule-based financial recommendation chatbot using React and TypeScript, guided by Commonwealth Bank's product guidelines.",
+            ],
         }
     ];
 
