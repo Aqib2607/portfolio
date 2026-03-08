@@ -6,6 +6,27 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 const Certificates = () => {
     const certificates = [
         {
+            title: "Web Development Internship",
+            issuer: "PIBD",
+            date: "August 2025 – February 2026",
+            image: "/certificates/Certificate_2.jpg",
+            link: null,
+            isPdf: false,
+            skills: [
+                "Full-Stack Web Development", "HTML5", "CSS3", "Responsive Web Design",
+                "JavaScript", "PHP", "Laravel Framework", "MVC Architecture",
+                "MySQL", "CRUD Application Development", "Authentication Systems", "REST API Fundamentals"
+            ],
+            description: [
+                "Successfully completed a six-month Web Development internship at PIBD, gaining hands-on experience in full-stack web development and modern development workflows.",
+                "Developed responsive and accessible web interfaces using HTML5, CSS3, and JavaScript while applying best practices in layout, performance, and user experience.",
+                "Implemented backend functionality using PHP and MySQL including authentication systems, form processing, session management, and database-driven CRUD applications.",
+                "Built structured web applications using the Laravel framework, applying MVC architecture, routing, controllers, Blade templates, and Eloquent ORM.",
+                "Applied software engineering practices such as modular design, validation, debugging, and error handling during real-world development tasks.",
+                "Gained practical experience deploying web applications to hosting environments and integrating APIs for production-ready solutions."
+            ],
+        },
+        {
             title: "GenAI Job Simulation",
             issuer: "BCG X / Forage",
             date: "February 22nd, 2026",
@@ -119,15 +140,17 @@ const Certificates = () => {
 
                                         <div className="mt-auto pt-4 flex items-center justify-between text-sm text-muted-foreground border-t border-border/50">
                                             <span>{cert.date}</span>
-                                            <a
-                                                href={cert.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-primary hover:text-primary/80 transition-colors flex items-center gap-1 font-medium"
-                                                onClick={(e) => e.stopPropagation()}
-                                            >
-                                                View Link <ExternalLink className="w-3 h-3" />
-                                            </a>
+                                            {cert.link && (
+                                                <a
+                                                    href={cert.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-primary hover:text-primary/80 transition-colors flex items-center gap-1 font-medium"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    View Link <ExternalLink className="w-3 h-3" />
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
