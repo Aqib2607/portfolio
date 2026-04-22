@@ -117,7 +117,7 @@ const Hero = () => {
                 <Facebook className="w-6 h-6" />
               </a>
               <a
-                href="https://www.instagram.com/_.the_asmodeus._/"
+                href="https://www.instagram.com/aqib.jawwad/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"
@@ -148,7 +148,7 @@ const Hero = () => {
                 <Facebook className="w-6 h-6" />
               </a>
               <a
-                href="https://www.instagram.com/_.the_asmodeus._/"
+                href="https://www.instagram.com/aqib.jawwad/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"

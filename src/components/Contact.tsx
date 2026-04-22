@@ -127,7 +127,7 @@ const Contact = () => {
     {
       icon: Instagram,
       label: "Instagram",
-      href: "https://www.instagram.com/_.the_asmodeus._/",
+      href: "https://www.instagram.com/aqib.jawwad/",
       color: "border-pink-500 text-pink-500 hover:bg-pink-500/10"
     },
     {
