@@ -121,7 +121,7 @@ const Contact = () => {
     {
       icon: Facebook,
       label: "Facebook",
-      href: "https://www.facebook.com/TheAsmodeus2607",
+      href: "https://www.facebook.com/Aqib2607",
       color: "border-blue-600 text-blue-600 hover:bg-blue-600/10"
     },
     {

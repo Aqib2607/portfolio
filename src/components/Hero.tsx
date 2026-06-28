@@ -108,7 +108,7 @@ const Hero = () => {
               </a>
               {/* Desktop: Show remaining 3 links in same row */}
               <a
-                href="https://www.facebook.com/TheAsmodeus2607"
+                href="https://www.facebook.com/Aqib2607"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Facebook"
@@ -139,7 +139,7 @@ const Hero = () => {
             {/* Bottom Row - Remaining 3 Social Links (mobile only) */}
             <div className="flex sm:hidden justify-center gap-6">
               <a
-                href="https://www.facebook.com/TheAsmodeus2607"
+                href="https://www.facebook.com/Aqib2607"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Facebook"
