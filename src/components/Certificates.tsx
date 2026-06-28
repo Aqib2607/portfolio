@@ -1,9 +1,10 @@
-import { ExternalLink, Award } from "lucide-react";
+import { ExternalLink, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
+import { Link } from "react-router-dom";
 
-const Certificates = () => {
+const Certificates = ({ limit }: { limit?: number } = {}) => {
     const certificates = [
         {
             title: "Web Development Internship",
@@ -61,8 +62,28 @@ const Certificates = () => {
                 "Improved Git and GitHub skills, emphasizing effective source control management through the submission of changes to a project for team review.",
                 "Built and designed a rule-based financial recommendation chatbot using React and TypeScript, guided by Commonwealth Bank's product guidelines.",
             ],
+        },
+        {
+            title: "Engineering Job Simulation",
+            issuer: "British Airways / Forage",
+            date: "June 28th, 2026",
+            image: "/certificates/Certificate_4.png",
+            link: "https://www.theforage.com/completion-certificates/tMjbs76F526fF5v3G/WmDnBzkLZFR9Rcjqa_tMjbs76F526fF5v3G_699ad4ae3b2e4c13b632ae51_1782665918636_completion_certificate.pdf",
+            isPdf: false,
+            skills: [
+                "Stamp Asset Management", "Contingency Planning", "Data Interpretation",
+                "Data-Driven Planning", "Continuous Risk", "Quality Assurance",
+                "Report Writing", "Stakeholder Communication", "Supply Chain Forecasting", "Sustainability"
+            ],
+            description: [
+                "Completed a job simulation focused on aircraft defect diagnosis and C-check maintenance planning for British Airways Engineering and Supply Chain teams.",
+                "Analyzed fault logs and technical schematics from an A320 to escalate a critical defect and develop a corresponding work request using AMM guidelines.",
+                "Forecasted material demand across a maintenance cycle, identified at-risk components, and proposed mitigation strategies using sustainability and lead time.",
+            ],
         }
     ];
+
+    const displayed = limit ? certificates.slice(0, limit) : certificates;
 
     return (
         <section id="certificates" className="py-20 relative bg-muted/30">
@@ -79,7 +100,7 @@ const Certificates = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {certificates.map((cert, index) => (
+                        {displayed.map((cert, index) => (
                             <Dialog key={index}>
                                 <div
                                     className="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full"
@@ -176,6 +197,21 @@ const Certificates = () => {
                             </Dialog>
                         ))}
                     </div>
+
+                    {/* View All button — only shown when limit is set */}
+                    {limit && (
+                        <div className="text-center mt-12">
+                            <Link to="/certificates">
+                                <Button
+                                    size="lg"
+                                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 group"
+                                >
+                                    View All Certificates
+                                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Landing from "./pages/Landing";
 import ProjectsPage from "./pages/ProjectsPage";
+import CertificatesPage from "./pages/CertificatesPage";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -26,6 +27,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/certificates" element={<CertificatesPage />} />
             </Routes>
 
             {/* Footer */}

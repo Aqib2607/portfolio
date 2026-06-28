@@ -20,7 +20,7 @@ const Landing = () => {
           <About />
           <Skills />
           <Projects />
-          <Certificates />
+          <Certificates limit={3} />
           <Contact />
         </main>
       </div>

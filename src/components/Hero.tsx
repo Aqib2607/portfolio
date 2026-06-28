@@ -15,12 +15,12 @@ const Hero = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Profile Image */}
-          <div className="mb-8 mt-10 animate-fade-in-up">
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary p-1 animate-glow">
+          <div className="mb-8 mt-16 animate-fade-in-up">
+            <div className="w-44 h-44 mx-auto rounded-2xl bg-gradient-primary animate-glow">
               <img
                 src="/about/profile_pic.jpg"
                 alt="Aqib Jawwad"
-                className="w-full h-full rounded-full object-cover"
+                className="w-full h-full rounded-2xl object-cover"
                 loading="eager"
                 // @ts-expect-error - fetchpriority is valid but not yet in React types
                 fetchpriority="high"
