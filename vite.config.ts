@@ -22,5 +22,31 @@ export default defineConfig(({ mode }) => ({
     // Setting emptyOutDir: false prevents Windows EPERM permission lock errors during builds
     // while Vite cleanly overwrites all output bundle chunks.
     emptyOutDir: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // React core runtime
+          "vendor-react": ["react", "react-dom", "react/jsx-runtime"],
+          // Routing
+          "vendor-router": ["react-router-dom"],
+          // Animation
+          "vendor-motion": ["framer-motion"],
+          // Radix UI primitives (shared across all shadcn components)
+          "vendor-radix": [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-toast",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-label",
+            "@radix-ui/react-separator",
+            "@radix-ui/react-accordion",
+          ],
+          // Data fetching / state
+          "vendor-query": ["@tanstack/react-query"],
+        },
+      },
+    },
   },
 }));
