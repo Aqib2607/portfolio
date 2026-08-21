@@ -42,20 +42,21 @@ const Hero = () => {
                 Hi, I'm Aqib Jawwad Nahin
               </p>
               <h1 className="font-heading font-normal text-white tracking-tight leading-[1.08] mt-2">
-                {/* Stable-height wrapper: reserves space for the tallest possible animated phrase.
-                    On mobile (text-3xl ≈ 30px × 1.1 line-height) the longest 26-char phrase wraps
-                    to 2 lines at narrow widths (~320-430px). min-h-[4.5rem] (72px) covers both
-                    lines + breathing room. At sm breakpoint all phrases fit one line, so
-                    min-h-[3.5rem] (56px) is sufficient. At lg the headline stays single-line too. */}
+                {/* Permanently reserved viewport: isolates animated text from document flow.
+                    Height accommodates 2-line states on mobile (h-[4.75rem]), tablet (sm:h-[7rem]),
+                    and desktop/laptop (lg:h-[8.5rem]) while absolute positioning guarantees
+                    zero layout shift of downstream white content during phrase transitions. */}
                 <div
                   aria-hidden="false"
-                  className="min-h-[4.5rem] sm:min-h-[3.75rem] lg:min-h-[4.5rem]"
+                  className="relative w-full h-[4.75rem] sm:h-[7rem] lg:h-[8.5rem]"
                 >
-                  <TextScramble 
-                    phrases={ROLES} 
-                    interval={3400} 
-                    className="text-3xl sm:text-5xl lg:text-6xl text-primary font-medium tracking-tight block drop-shadow-sm" 
-                  />
+                  <div className="absolute inset-x-0 top-0">
+                    <TextScramble 
+                      phrases={ROLES} 
+                      interval={3400} 
+                      className="text-3xl sm:text-5xl lg:text-6xl text-primary font-medium tracking-tight block drop-shadow-sm" 
+                    />
+                  </div>
                 </div>
               </h1>
             </FadeUp>
