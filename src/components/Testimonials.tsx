@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Linkedin, ArrowLeft, ArrowRight, ArrowUpRight, Quote } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const recommendations = [
@@ -27,7 +27,7 @@ const recommendations = [
   },
 ];
 
-const slideVariants = {
+const slideVariants: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? "50%" : "-50%",
     opacity: 0,
