@@ -14,7 +14,7 @@ const Landing = () => {
   return (
     <>
       <Helmet>
-        <title>Aqib Jawwad Nahin — Full Stack Developer & Software Engineer</title>
+        <title>Aqib Jawwad Nahin</title>
         <meta
           name="description"
           content="Aqib Jawwad Nahin — Full Stack Developer & Software Engineer specializing in React, TypeScript, Laravel, and AI integrations. View recent full-stack projects, architecture case studies, and engineering capabilities."
