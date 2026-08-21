@@ -4,7 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Landing from "./pages/Landing";
@@ -25,7 +26,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
+      staleTime: 5 * 60 * 1000,
       retry: 2,
     },
   },
@@ -42,6 +43,38 @@ function PageSkeleton() {
   );
 }
 
+// Inner component — must be inside BrowserRouter to use useLocation
+function AnimatedRoutes() {
+  const location = useLocation();
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <Suspense fallback={<PageSkeleton />}>
+          <Routes location={location}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
+            <Route path="/certificates" element={<CertificatesPage />} />
+            <Route path="/philosophy" element={<PhilosophyPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/resume" element={<ResumePage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
@@ -54,21 +87,7 @@ const App = () => (
           <CustomCursor />
           <div className="min-h-screen bg-[#080808] text-white overflow-x-hidden flex flex-col selection:bg-primary selection:text-black">
             <Navigation />
-            <Suspense fallback={<PageSkeleton />}>
-              <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/projects" element={<ProjectsPage />} />
-                <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
-                <Route path="/certificates" element={<CertificatesPage />} />
-                <Route path="/philosophy" element={<PhilosophyPage />} />
-                <Route path="/blog" element={<BlogPage />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-                <Route path="/resume" element={<ResumePage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-
-            {/* Redesigned Footer */}
+            <AnimatedRoutes />
             <Footer />
           </div>
         </BrowserRouter>

@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { contactChannels } from "@/data/socials";
 import { getBrandIcon } from "./BrandIcons";
+import { FadeUp } from "./motion/MotionPrimitives";
 
 interface FormState {
   fullName: string;
@@ -132,20 +133,26 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-28 sm:py-36 bg-[#0D0D0D] border-t border-white/10" aria-label="Contact Section">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section id="contact" className="py-28 sm:py-36 bg-[#0D0D0D] border-t border-white/10 relative overflow-hidden" aria-label="Contact Section">
+      
+      {/* Glowing Ambient Halo matching reference video (03:13) */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-primary/10 filter blur-[100px] pointer-events-none -mr-20 animate-pulse" />
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
 
         {/* Header matching Hampus contact */}
         <div className="max-w-4xl mb-20 space-y-4">
-          <h2 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-tight">
-            Let's create something amazing together
-          </h2>
-          <p className="text-lg sm:text-xl text-[#B3B3B3] font-light">
-            Have a project idea or an engineering role? Reach out and let's make it happen.
-          </p>
+          <FadeUp>
+            <h2 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-tight">
+              Let's create something amazing together
+            </h2>
+            <p className="text-lg sm:text-xl text-[#B3B3B3] font-light mt-4">
+              Have a project idea or an engineering role? Reach out and let's make it happen.
+            </p>
+          </FadeUp>
 
           {/* Quick Contact & Social Channels */}
-          <div className="flex flex-wrap gap-2.5 sm:gap-3.5 pt-6">
+          <FadeUp delay={0.2} className="flex flex-wrap gap-2.5 sm:gap-3.5 pt-6">
             {contactChannels.map((item) => (
               <a
                 key={item.id}
@@ -159,7 +166,7 @@ const Contact = () => {
                 <span>{item.label}</span>
               </a>
             ))}
-          </div>
+          </FadeUp>
         </div>
 
         {/* Contact Form Sub-section */}
