@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { Linkedin, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { Linkedin, ArrowLeft, ArrowRight, ArrowUpRight, Quote } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const recommendations = [
@@ -26,23 +27,65 @@ const recommendations = [
   },
 ];
 
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? "50%" : "-50%",
+    opacity: 0,
+    filter: "blur(6px)",
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: {
+      x: { type: "spring", stiffness: 280, damping: 28 },
+      opacity: { duration: 0.35, ease: "easeOut" },
+      filter: { duration: 0.3 },
+    },
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? "-50%" : "50%",
+    opacity: 0,
+    filter: "blur(6px)",
+    transition: {
+      x: { type: "spring", stiffness: 280, damping: 28 },
+      opacity: { duration: 0.25, ease: "easeIn" },
+      filter: { duration: 0.2 },
+    },
+  }),
+};
+
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const handlePrev = useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    setDirection(-1);
     setCurrentIndex((prev) => (prev === 0 ? recommendations.length - 1 : prev - 1));
-    setTimeout(() => setIsAnimating(false), 300);
-  }, [isAnimating]);
+  }, []);
 
   const handleNext = useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+    setDirection(1);
     setCurrentIndex((prev) => (prev === recommendations.length - 1 ? 0 : prev + 1));
-    setTimeout(() => setIsAnimating(false), 300);
-  }, [isAnimating]);
+  }, []);
+
+  const handleDotClick = (targetIndex: number) => {
+    if (targetIndex === currentIndex) return;
+    setDirection(targetIndex > currentIndex ? 1 : -1);
+    setCurrentIndex(targetIndex);
+  };
+
+  // Auto-slide every 7 seconds, pauses on hover / focus
+  useEffect(() => {
+    if (isPaused || prefersReducedMotion) return;
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev === recommendations.length - 1 ? 0 : prev + 1));
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [isPaused, prefersReducedMotion]);
 
   // Keyboard navigation for carousel
   useEffect(() => {
@@ -65,13 +108,14 @@ const Testimonials = () => {
   const current = recommendations[currentIndex];
 
   return (
-    <section className="py-28 sm:py-36 bg-[#0D0D0D] border-t border-white/10" aria-label="Professional Recommendations">
+    <section className="py-28 sm:py-36 bg-[#0D0D0D] border-t border-white/10 overflow-hidden" aria-label="Professional Recommendations">
       <div className="container mx-auto px-6 max-w-6xl">
 
         {/* Section Header */}
         <div className="mb-16 pb-8 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <p className="text-xs uppercase tracking-widest text-[#888888] font-medium mb-3">
+            <p className="text-xs uppercase tracking-widest text-[#888888] font-medium mb-3 flex items-center gap-2">
+              <Quote className="w-3.5 h-3.5 text-primary" />
               Professional Endorsements
             </p>
             <h2 className="font-heading text-4xl sm:text-6xl font-light text-white tracking-tight">
@@ -87,14 +131,14 @@ const Testimonials = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrev}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-white flex items-center justify-center transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-white flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-label="Previous testimonial"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={handleNext}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-white flex items-center justify-center transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-white flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-label="Next testimonial"
               >
                 <ArrowRight className="w-4 h-4" />
@@ -103,51 +147,78 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Featured Testimonial Card */}
+        {/* Featured Testimonial Card with Slide Animation */}
         <div
-          className={`p-10 sm:p-16 lg:p-20 rounded-3xl bg-[#141414] border border-white/10 relative transition-opacity duration-300 ${
-            isAnimating ? "opacity-40" : "opacity-100"
-          }`}
+          className="p-8 sm:p-14 lg:p-18 rounded-3xl bg-[#141414] border border-white/10 relative overflow-hidden shadow-2xl"
           role="region"
           aria-live="polite"
           aria-label={`Testimonial ${currentIndex + 1} of ${recommendations.length}`}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
-          <div className="max-w-4xl space-y-10">
-            {/* Quote */}
-            <blockquote className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed tracking-tight">
-              "{current.quote}"
-            </blockquote>
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Author Credentials */}
-            <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="space-y-1">
-                <p className="text-lg sm:text-xl font-medium text-white">
-                  {current.author}
-                </p>
-                <p className="text-sm text-[#B3B3B3] font-light">
-                  {current.role}
-                </p>
-                <p className="text-xs text-primary font-mono pt-0.5">
-                  {current.context}
-                </p>
-              </div>
+          <div className="relative z-10 min-h-[280px] sm:min-h-[240px] flex flex-col justify-between">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={prefersReducedMotion ? undefined : slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                drag={prefersReducedMotion ? false : "x"}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.15}
+                onDragEnd={(_, { offset, velocity }) => {
+                  if (offset.x < -40 || velocity.x < -400) {
+                    handleNext();
+                  } else if (offset.x > 40 || velocity.x > 400) {
+                    handlePrev();
+                  }
+                }}
+                className="space-y-8 select-none"
+              >
+                {/* Quote */}
+                <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed tracking-tight">
+                  "{current.quote}"
+                </blockquote>
 
-              {/* Quick Dots Indicator */}
-              <div className="flex items-center gap-2">
-                {recommendations.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-200 ${
-                      currentIndex === idx
-                        ? "w-8 bg-white"
-                        : "w-2 bg-white/20 hover:bg-white/40"
-                    }`}
-                    aria-label={`Go to testimonial ${idx + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
+                {/* Author Credentials */}
+                <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <p className="text-base sm:text-lg font-medium text-white">
+                      {current.author}
+                    </p>
+                    <p className="text-xs sm:text-sm text-[#B3B3B3] font-light">
+                      {current.role}
+                    </p>
+                    <p className="text-xs text-primary font-mono pt-0.5">
+                      {current.context}
+                    </p>
+                  </div>
+
+                  {/* Quick Dots Indicator */}
+                  <div className="flex items-center gap-2">
+                    {recommendations.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleDotClick(idx)}
+                        className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-primary ${
+                          currentIndex === idx
+                            ? "w-8 bg-primary shadow-sm shadow-primary/30"
+                            : "w-2 bg-white/20 hover:bg-white/40"
+                        }`}
+                        aria-label={`Go to testimonial ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
@@ -177,3 +248,4 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+
